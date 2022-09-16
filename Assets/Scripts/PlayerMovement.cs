@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
   public Rigidbody rb; // reference to player's rigid body component
   public float forwardForce = 2000f;
   public float sidewaysForce = 500f;
@@ -30,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
     if (Input.GetKey("a"))
     {
       rb.AddForce(-sidewaysForce * deltaTime, 0, 0, ForceMode.VelocityChange);
+    }
+
+    if (rb.position.y < -1f)
+    {
+      FindObjectOfType<GameManager>().EndGame();
     }
   }
 

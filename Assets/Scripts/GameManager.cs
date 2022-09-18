@@ -7,17 +7,23 @@ public class GameManager : MonoBehaviour
 
   public float restartDelay = 1f;
 
+  public GameObject levelCompleteUi;
+
   public void EndGame()
   {
     if (!hasGameEnded)
     {
       hasGameEnded = true;
-      Debug.Log("END GAME");
       Invoke("Restart", restartDelay);
     }
   }
   void Restart()
   {
     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+  }
+
+  public void CompleteLevel()
+  {
+    levelCompleteUi.SetActive(true);
   }
 }

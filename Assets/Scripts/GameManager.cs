@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
   public GameObject levelCompleteUi;
 
-  public void EndGame()
+  public void LoseGame()
   {
     if (!hasGameEnded)
     {
@@ -25,5 +25,7 @@ public class GameManager : MonoBehaviour
   public void CompleteLevel()
   {
     levelCompleteUi.SetActive(true);
+    // "loosing because of falling" part won't run because it is part of `PlayerMovement` script
+    FindObjectOfType<PlayerMovement>().enabled = false;
   }
 }
